@@ -3,6 +3,8 @@
 Neste projeto são abordados conceitos e melhores práticas do mercado no desenvolvimento
 de aplicações em C# confiáveis e estruturadas.
 
+Especialista: Victor Fructuoso
+
 #
 
 # DesignPatternSamples
