@@ -1,4 +1,4 @@
-### Repo de Estudo - Decola Dev Avanade 2021 - Digital Innovation One
+### Repositório de Estudo - Decola Dev Avanade 2021 - Digital Innovation One
 
 Neste projeto são abordados conceitos e melhores práticas do mercado no desenvolvimento
 de aplicações em C# confiáveis e estruturadas.
