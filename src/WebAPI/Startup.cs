@@ -44,7 +44,8 @@ namespace DesignPatternSamples.WebAPI
             });
             #endregion
 
-            services.AddDependencyInjection()
+            services.AddDependencyInjectionDebitosVeiculos()
+                .AddDependencyInjectionPontosCNH()
                 .AddAutoMapper();
 
             /*Cache distribuído FAKE*/
@@ -89,6 +90,8 @@ namespace DesignPatternSamples.WebAPI
 
             app.UseDetranVerificadorDebitosFactory();
 
+            app.UseDetranVerificadorPontosFactory();
+
             app.UseMiddleware<ExceptionHandlingMiddleware>();
 
             app.UseMvc();
@@ -97,11 +100,12 @@ namespace DesignPatternSamples.WebAPI
 
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection AddDependencyInjection(this IServiceCollection services)
+        public static IServiceCollection AddDependencyInjectionDebitosVeiculos(this IServiceCollection services)
         {
             return services
                 .AddTransient<IDetranVerificadorDebitosService, DetranVerificadorDebitosServices>()
                 .Decorate<IDetranVerificadorDebitosService, DetranVerificadorDebitosDecoratorCache>()
+                .Decorate<IDetranVerificadorDebitosService, DetranVerificadorDebitosDecoratorValidarDados>()
                 .Decorate<IDetranVerificadorDebitosService, DetranVerificadorDebitosDecoratorLogger>()
                 .AddSingleton<IDetranVerificadorDebitosFactory, DetranVerificadorDebitosFactory>()
                 .AddTransient<DetranPEVerificadorDebitosRepository>()
@@ -109,6 +113,15 @@ namespace DesignPatternSamples.WebAPI
                 .AddTransient<DetranRJVerificadorDebitosRepository>()
                 .AddTransient<DetranRSVerificadorDebitosRepository>()
                 .AddScoped<ExceptionHandlingMiddleware>();
+        }
+
+        public static IServiceCollection AddDependencyInjectionPontosCNH(this IServiceCollection services)
+        {
+            return services
+                .AddTransient<IDetranVerificadorPontosService, DetranVerificadorPontosServices>()
+                .Decorate<IDetranVerificadorPontosService, DetranVerificadorPontosDecoratorValidarDados>()
+                .AddSingleton<IDetranVerificadorPontosFactory, DetranVerificadorPontosFactory>()
+                .AddTransient<DetranSPVerificadorPontosRepository>();
         }
 
         public static IServiceCollection AddAutoMapper(this IServiceCollection services)
@@ -133,5 +146,15 @@ namespace DesignPatternSamples.WebAPI
 
             return app;
         }
+
+        public static IApplicationBuilder UseDetranVerificadorPontosFactory(this IApplicationBuilder app)
+        {
+            app.ApplicationServices.GetService<IDetranVerificadorPontosFactory>()
+                .Register("SP", typeof(DetranSPVerificadorPontosRepository));
+
+            return app;
+        }
+
+
     }
 }

@@ -26,15 +26,15 @@ namespace DesignPatternSamples.WebAPI.Middlewares
             catch (Exception e)
             {
                 _Logger.LogError(e, e.Message);
-                await HandleExceptionAsync(context);
+                await HandleExceptionAsync(context, e.Message);
             }
         }
 
-        private Task HandleExceptionAsync(HttpContext context)
+        private Task HandleExceptionAsync(HttpContext context, string message)
         {
             var code = HttpStatusCode.InternalServerError;
 
-            string result = JsonConvert.SerializeObject(new FailureResultModel("Ocorreu um erro inesperado"));
+            string result = JsonConvert.SerializeObject(new FailureResultModel(message));
 
             context.Response.ContentType = "application/json";
             context.Response.StatusCode = (int)code;
