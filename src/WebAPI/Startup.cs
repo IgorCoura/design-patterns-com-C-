@@ -119,6 +119,7 @@ namespace DesignPatternSamples.WebAPI
         {
             return services
                 .AddTransient<IDetranVerificadorPontosService, DetranVerificadorPontosServices>()
+                .Decorate<IDetranVerificadorPontosService, DetranVerificadorPontosDecoratorCache>()
                 .Decorate<IDetranVerificadorPontosService, DetranVerificadorPontosDecoratorValidarDados>()
                 .AddSingleton<IDetranVerificadorPontosFactory, DetranVerificadorPontosFactory>()
                 .AddTransient<DetranSPVerificadorPontosRepository>();

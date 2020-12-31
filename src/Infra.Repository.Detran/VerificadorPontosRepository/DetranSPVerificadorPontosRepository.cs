@@ -19,6 +19,7 @@ namespace DesignPatternSamples.Infra.Repository.Detran
 
         public Task<IEnumerable<PontosCNH>> ConsultarPontos(CNH cnh)
         {
+            Task.Delay(5000).Wait(); //Deixando o serviço mais lento para evidenciar o uso do CACHE.
             _Logger.LogDebug($"Consultado Pontos para a CHN de registro: {cnh.Registro} para o estado SP");
             return Task.FromResult<IEnumerable<PontosCNH>>(new List<PontosCNH>() { new PontosCNH() });
         }

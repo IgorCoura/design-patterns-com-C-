@@ -4,6 +4,7 @@ using System.Text;
 
 namespace DesignPatternSamples.Application.DTO
 {
+    [Serializable]
     public class PontosCNH
     {
         public DateTime DataOcorrencia { get; set; }
