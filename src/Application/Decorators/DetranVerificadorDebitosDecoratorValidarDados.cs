@@ -19,7 +19,7 @@ namespace DesignPatternSamples.Application.Decorators
 
         public Task<IEnumerable<DebitoVeiculo>> ConsultarDebitos(Veiculo veiculo)
         {
-            if(!ValidarDados.PlacaVeiculo(veiculo.Placa, out string message))
+            if(!ValidarDadosVeiculo.PlacaVeiculo(veiculo.Placa, out string message))
             {
                 throw new Exception(message);
             }

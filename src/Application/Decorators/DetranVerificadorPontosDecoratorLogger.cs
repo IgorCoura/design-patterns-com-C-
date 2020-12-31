@@ -20,14 +20,13 @@ namespace DesignPatternSamples.Application.Decorators
             _Logger = logger;
         }
 
-        public Task<IEnumerable<PontosCNH>> ConsultarPontos(CNH cnh)
+        public async Task<IEnumerable<PontosCNH>> ConsultarPontos(CNH cnh)
         {
-            var cnh;
             Stopwatch watch = Stopwatch.StartNew();
-            _Logger.LogInformation($"Iniciando a execução do método ConsultarDebitos({cnh})");
-            var result = await _Inner.ConsultarDebitos(cnh);
+            _Logger.LogInformation($"Iniciando a execução do método ConsultarPontos({cnh})");
+            var result = await _Inner.ConsultarPontos(cnh);
             watch.Stop();
-            _Logger.LogInformation($"Encerrando a execução do método ConsultarDebitos({cnh}) {watch.ElapsedMilliseconds}ms");
+            _Logger.LogInformation($"Encerrando a execução do método ConsultarPontos({cnh}) {watch.ElapsedMilliseconds}ms");
             return result;
         }
     }

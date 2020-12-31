@@ -20,8 +20,8 @@ namespace DesignPatternSamples.Application.Decorators
 
         public Task<IEnumerable<PontosCNH>> ConsultarPontos(CNH cnh)
         {
-            if(!ValidarDados.CPF(cnh.CPF, out message) || !ValidarDados.Registro(cnh.Registro, out message) 
-                || !ValidarDados.DataNascimento(cnh.DataNascimento, out message))
+            if(!ValidarDadosCNH.CPF(cnh.CPF, out message) || !ValidarDadosCNH.Registro(cnh.Registro, out message) 
+                || !ValidarDadosCNH.DataNascimento(cnh.DataNascimento, out message))
             {                
                 throw new Exception(message);
             }
