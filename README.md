@@ -1,3 +1,7 @@
+# Modificações
+- Adição da posibilidade de buscar os Pontos da CNH
+- Verificação dos dados recebidos(CPF, RegistroCNH, Placa, idade)
+
 ### Repositório de Estudo - Decola Dev Avanade 2021 - Digital Innovation One
 
 Neste projeto são abordados conceitos e melhores práticas do mercado no desenvolvimento
