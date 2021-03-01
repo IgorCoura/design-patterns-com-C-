@@ -1,6 +1,18 @@
-# Modificações
-- Adição da posibilidade de buscar os Pontos da CNH
-- Verificação dos dados recebidos(CPF, RegistroCNH, Placa, idade)
+# Obsevação
+Cheguei nesse projeto apartir do bootcamp oferecido pela Digital Innovation One e fiz alterações para colocar em pratica os conceitos que aprendir de Design Patterns.
+
+### Alterações
+Criei a possibilidade de consultar os pontos da CNH. E para isso tive que criar:
+- PontosCNHController
+- DetranVerificadorPontosDecoratorCache
+- DetranVerificadorPontosDecoratorLogger
+- DetranVerificadorPontosDecoratorValidarDados
+- CNH
+- PontosCNH
+- DetranVerificadorPontosServices
+- DetranVerificadorPontosFactory
+- DetranSPVerificadorPontosRepository
+- E mais algumas outras.
 
 ### Repositório de Estudo - Decola Dev Avanade 2021 - Digital Innovation One
 
